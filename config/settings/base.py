@@ -60,6 +60,8 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
+    "admin_interface",
+    "colorfield",
     "django.contrib.admin",
     "django.forms",
 ]
@@ -77,6 +79,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "self_assessment_educational_programs_storage.users",
+    "self_assessment_educational_programs_storage.self_assessment_programs",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -85,7 +88,9 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "self_assessment_educational_programs_storage.contrib.sites.migrations"}
+MIGRATION_MODULES = {
+    "sites": "self_assessment_educational_programs_storage.contrib.sites.migrations"
+}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -263,13 +268,21 @@ ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = "self_assessment_educational_programs_storage.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = (
+    "self_assessment_educational_programs_storage.users.adapters.AccountAdapter"
+)
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-ACCOUNT_FORMS = {"signup": "self_assessment_educational_programs_storage.users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {
+    "signup": "self_assessment_educational_programs_storage.users.forms.UserSignupForm"
+}
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = "self_assessment_educational_programs_storage.users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = (
+    "self_assessment_educational_programs_storage.users.adapters.SocialAccountAdapter"
+)
 # https://django-allauth.readthedocs.io/en/latest/forms.html
-SOCIALACCOUNT_FORMS = {"signup": "self_assessment_educational_programs_storage.users.forms.UserSocialSignupForm"}
+SOCIALACCOUNT_FORMS = {
+    "signup": "self_assessment_educational_programs_storage.users.forms.UserSocialSignupForm"
+}
 
 # django-rest-framework
 # -------------------------------------------------------------------------------

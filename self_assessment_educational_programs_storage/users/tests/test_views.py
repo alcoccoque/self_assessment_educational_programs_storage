@@ -10,7 +10,9 @@ from django.urls import reverse
 
 from self_assessment_educational_programs_storage.users.forms import UserAdminChangeForm
 from self_assessment_educational_programs_storage.users.models import User
-from self_assessment_educational_programs_storage.users.tests.factories import UserFactory
+from self_assessment_educational_programs_storage.users.tests.factories import (
+    UserFactory,
+)
 from self_assessment_educational_programs_storage.users.views import (
     UserRedirectView,
     UserUpdateView,

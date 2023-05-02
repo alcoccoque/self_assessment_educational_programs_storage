@@ -1,6 +1,11 @@
+docker-compose -f local.yml up
+export DATABASE_URL='postgres://debug:debug@postgres:5432/self_assessment_educational_programs_storage'
+
+python manage.py graph_models -a -o all_models.png
+
 # Self assessment educational programs storage
 
-INFORMATION ON THE SELF-ASSESSMENT OF THE EDUCATIONAL PROGRAM 
+INFORMATION ON THE SELF-ASSESSMENT OF THE EDUCATIONAL PROGRAM
 
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
