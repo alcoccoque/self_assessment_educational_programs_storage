@@ -7,6 +7,7 @@ from self_assessment_educational_programs_storage.users.forms import (
     UserAdminChangeForm,
     UserAdminCreationForm,
 )
+from self_assessment_educational_programs_storage.users.models import Student, Teacher
 
 User = get_user_model()
 
@@ -34,3 +35,13 @@ class UserAdmin(auth_admin.UserAdmin):
     )
     list_display = ["username", "name", "is_superuser"]
     search_fields = ["name"]
+
+
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Teacher)
+class StudentAdmin(admin.ModelAdmin):
+    pass
