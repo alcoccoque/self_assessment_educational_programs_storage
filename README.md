@@ -1,4 +1,5 @@
 docker-compose -f local.yml up
+
 export DATABASE_URL='postgres://debug:debug@postgres:5432/self_assessment_educational_programs_storage'
 
 python manage.py graph_models -a -o all_models.png
