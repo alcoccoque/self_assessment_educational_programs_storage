@@ -9,24 +9,59 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('table_annex', '0001_initial'),
-        ('general_information', '0002_initial'),
-        ('general_question_answer', '0001_initial'),
+        ("table_annex", "0001_initial"),
+        ("general_information", "0002_initial"),
+        ("general_question_answer", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='InformationOnSelfAssessmentOfEducationalProgram',
+            name="InformationOnSelfAssessmentOfEducationalProgram",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('general_information', models.ForeignKey(help_text='Перша частина довідника, що містить інформацію про ЗВО та ОП', on_delete=django.db.models.deletion.PROTECT, related_name='general_information_self_assessment', to='general_information.generalinformation', verbose_name='Загальні відомості')),
-                ('general_question_answer', models.ForeignKey(help_text='Друга частина довідника, що містить відповіді на загальні питання', on_delete=django.db.models.deletion.PROTECT, related_name='general_question_answer_self_assessment', to='general_question_answer.generalquestionanswer', verbose_name='Відповіді на загальні питання')),
-                ('tables_annex', models.ForeignKey(help_text='Додаток до довідника про самооцінювання ОП(таблиці)', on_delete=django.db.models.deletion.PROTECT, related_name='tables_annex_self_assessment', to='table_annex.tablesannex', verbose_name='Таблиці додаток')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "general_information",
+                    models.ForeignKey(
+                        help_text="Перша частина довідника, що містить інформацію про ЗВО та ОП",
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="general_information_self_assessment",
+                        to="general_information.generalinformation",
+                        verbose_name="Загальні відомості",
+                    ),
+                ),
+                (
+                    "general_question_answer",
+                    models.ForeignKey(
+                        help_text="Друга частина довідника, що містить відповіді на загальні питання",
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="general_question_answer_self_assessment",
+                        to="general_question_answer.generalquestionanswer",
+                        verbose_name="Відповіді на загальні питання",
+                    ),
+                ),
+                (
+                    "tables_annex",
+                    models.ForeignKey(
+                        help_text="Додаток до довідника про самооцінювання ОП(таблиці)",
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="tables_annex_self_assessment",
+                        to="table_annex.tablesannex",
+                        verbose_name="Таблиці додаток",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Довідник про самооцінювання ОП',
-                'verbose_name_plural': 'Довідники про самооцінювання ОП',
-                'db_table': 'information_on_self_assessment_of_educational_program',
+                "verbose_name": "Довідник про самооцінювання ОП",
+                "verbose_name_plural": "Довідники про самооцінювання ОП",
+                "db_table": "information_on_self_assessment_of_educational_program",
             },
         ),
     ]

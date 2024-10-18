@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Додати дані про викладача{% endblock %}
+
+{% block content %}
+<div class="center-container">
+  <form class="form-margin" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-primary" type="submit">Завантажити файл</button>
+  </form>
+</div>
+{% endblock content %}

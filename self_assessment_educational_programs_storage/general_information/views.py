@@ -1,5 +1,11 @@
+from django.shortcuts import redirect, render
 from rest_framework import viewsets
 
+from self_assessment_educational_programs_storage.users.parsers import (
+    parse_teacher_file,
+)
+
+from .forms import TeacherFileForm, TeacherForm
 from .models import (
     EducationProgram,
     EducationProgramAccreditationInformation,
@@ -17,6 +23,7 @@ from .models import (
     SeparateStructuralUnit,
     Specialty,
     StructuralSubdivision,
+    TeacherFile,
 )
 from .serializers import (
     EducationProgramAccreditationInformationSerializer,

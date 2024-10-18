@@ -217,15 +217,19 @@ class EducationProgramAccreditationInformation(models.Model):
         max_length=250, verbose_name="Цикл", help_text="Цикл (рівень вищої освіти)"
     )
     # Row 5
-    field_of_study = models.ForeignKey("FieldOfStudy",
-                                       on_delete=models.PROTECT,
-                                       verbose_name="Галузь знань",
-                                       help_text="Галузь знань")
+    field_of_study = models.ForeignKey(
+        "FieldOfStudy",
+        on_delete=models.PROTECT,
+        verbose_name="Галузь знань",
+        help_text="Галузь знань",
+    )
     # Row 6
-    specialty = models.ForeignKey("Specialty",
-                                  on_delete=models.PROTECT,
-                                  verbose_name="Спеціальність",
-                                  help_text="Спеціальність")
+    specialty = models.ForeignKey(
+        "Specialty",
+        on_delete=models.PROTECT,
+        verbose_name="Спеціальність",
+        help_text="Спеціальність",
+    )
     # Row 7
     specialization = models.CharField(
         max_length=250,

@@ -1,4 +1,5 @@
 """Kissa commands serializers."""
+
 from models import (
     ControlMeasuresAndAcademicIntegrity,
     EducationalEnvironmentAndMaterialResources,

@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}Self assessment educational programs storage{% endblock title %}</title>
+    <title>{% block title %}Сховище даних ІАТЕ% {% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="INFORMATION ON THE SELF-ASSESSMENT OF THE EDUCATIONAL PROGRAM ">
     <meta name="author" content="Alex">
@@ -18,7 +18,7 @@
 
     <!-- This file stores project-specific CSS -->
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    {% endblock %}
+    {% endblock css%}
     <!-- Le javascript
     ================================================== -->
     {# Placed at the top of the document so pages load faster with defer #}
@@ -42,24 +42,35 @@
           <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'home' %}">Self assessment educational programs storage</a>
+
+          <div class="logo-container">
+            <img src="{% static 'images/logo.svg' %}">
+          </div>
+
+          <a class="navbar-brand" href="{% url 'home' %}">Cховище даних ІАТЕ</a>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
               {% if request.user.is_authenticated %}
                 <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
+                  <a class="nav-link" href="{% url 'users:detail' request.user  %}">{% translate "Профіль" %}</a>
                 </li>
+                {% if request.user.teacher %}
+                  <li class="nav-item">
+                    {# URL provided by django-allauth/account/urls.py #}
+                    <a class="nav-link" href="{% url 'users:teacher_detail' request.user.teacher.id  %}">{% translate "Details" %}</a>
+                  </li>
+                {% endif %}
+                {% if request.user.teacher and request.user.teacher.is_approved %}
+                  <li class="nav-item">
+                    {# URL provided by django-allauth/account/urls.py #}
+                    <a class="nav-link" href="{% url 'users:teacher_upload'  %}">{% translate "Upload File" %}</a>
+                  </li>
+                {% endif %}
                 <li class="nav-item">
                   {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
+                  <a class="nav-link nav-last" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
                 </li>
               {% else %}
                 {% if ACCOUNT_ALLOW_REGISTRATION %}
@@ -92,7 +103,7 @@
       {% endif %}
 
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+
       {% endblock content %}
 
     </div> <!-- /container -->

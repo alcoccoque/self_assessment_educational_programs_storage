@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ teacher.first_name }} {{ teacher.middle_name }} {{ teacher.last_name }}</h1>
+<p><strong>Посада:</strong> {{ teacher.position }}</p>
+{% if teacher.department.responsible_department %}
+  <p><strong>Структурний підрозділ:</strong> {{ teacher.department.responsible_department }}</p>
+{% endif %}
+<p><strong>Вчене звання:</strong> {{ teacher.academic_title }}</p>
+<p><strong>Науковий ступінь:</strong>
+  <ul>
+    {% for academic_degree in academic_degrees %}
+        <li>{{ academic_degree.degree }} - {{ academic_degree.dissertation_topic }}
+            {% if academic_degree.specialty %}{{ academic_degree.specialty }}{% endif %}
+            {% if academic_degree.date %}{{ academic_degree.date }}{% endif %}
+        </li>
+    {% empty %}
+        <li>No academic degree added yet.</li>
+    {% endfor %}
+  </ul>
+<p><strong>Стаж:</strong></p>
+  <ul>
+    {% for experience_year in teacher.experience_years %}
+        <li>{{ experience_year }}</li>
+    {% empty %}
+        <li>No expirience years added yet.</li>
+    {% endfor %}
+  </ul>
+<p><strong>Основне місце роботи:</strong> {% if teacher.is_main_job %}Так{% else %}Ні{% endif %}</p>
+<p><strong>Факультет:</strong> {{ teacher.faculty }}</p>
+
+<h2>Кваліфікація викладача</h2>
+<ul>
+    {% for qualification in qualifications %}
+        <li>{{ qualification.name }} -
+            {% if qualification.code %}{{ qualification.code }}{% endif %}
+            {% if qualification.date %}{{ qualification.date }}{% endif %}
+            {% if not qualification.code %}{{ qualification.text }}{% endif %}
+        </li>
+    {% empty %}
+        <li>No qualifications added yet.</li>
+    {% endfor %}
+</ul>
+
+<h2>Підвищення кваліфікації</h2>
+<ul>
+    {% for development in professional_development %}
+        <li>
+            {% if development.type %}{{ development.type }}{% endif %}
+            {% if development.details %} - {{ development.details }}{% endif %}
+            {% if development.date or development.duration %}
+                (
+                {% if development.date %}{{ development.date }}{% endif %}
+                {% if development.date and development.duration %}, {% endif %}
+                {% if development.duration %}{{ development.duration }}{% endif %}
+                )
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No professional development entries yet.</li>
+    {% endfor %}
+</ul>
+
+<h2>Види і результати професійної діяльності</h2>
+<ul>
+    {% for activity in professional_activities %}
+        {% if activity.paragraph and activity.text %}
+            <li>{{ activity.paragraph }} - {{ activity.text }}</li>
+        {% elif activity.text %}
+            <li>{{ activity.text }}</li>
+        {% elif activity.paragraph %}
+            <li>{{ activity.paragraph }}</li>
+        {% endif %}
+    {% empty %}
+        <li>No professional activities added yet.</li>
+    {% endfor %}
+</ul>
+
+<h2>Освіта</h2>
+<ul>
+    {% for edu in education %}
+        <li>{{ edu.text }}</li>
+    {% empty %}
+        <li>No education entries yet.</li>
+    {% endfor %}
+</ul>
+
+<h2>Навчальні дисципліни</h2>
+<ul>
+    {% for course in courses %}
+        <li>{{ course.name }}</li>
+    {% empty %}
+        <li>No courses added yet.</li>
+    {% endfor %}
+</ul>
+
+<!-- Add buttons or links for editing data if the current user is the teacher -->
+{% if request.user == teacher.user %}
+    <a class="btn btn-primary" href="/admin/users/teacher/{{ teacher.pk }}/change/">Редагувати</a>
+{% endif %}
+{% endblock %}

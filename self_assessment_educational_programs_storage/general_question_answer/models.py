@@ -705,8 +705,8 @@ class EducationalProgram(models.Model):
 
     class Meta:
         db_table = "educational_program"
-        verbose_name = "Прозорість та публічність"
-        verbose_name_plural = "Прозорість та публічність"
+        verbose_name = "Навчання через дослідження"
+        verbose_name_plural = "Навчання через дослідження"
 
 
 # 11. Перспективи подальшого розвитку ОП

@@ -1,5 +1,3 @@
-/* These styles are generated from project.scss. */
-
 .alert-debug {
   color: black;
   background-color: white;
@@ -10,4 +8,143 @@
   color: #b94a48;
   background-color: #f2dede;
   border-color: #eed3d7;
+}
+
+body {
+  background-color: #fff; /* Black background */
+  color: #000; /* White text for better contrast */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('images/background.png');
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+}
+
+.navbar {
+  background-color: #FCD95C !important;
+  border-bottom: 2px solid #FFD700; /* Gold/yellow border to match the image */
+}
+
+.navbar-collapse {
+  flex-direction: row-reverse !important;
+}
+
+.navbar-brand {
+  color: #FFD700; /* Yellow text for the brand name */
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.navbar-nav .nav-link {
+  color: #000; /* White text for the links */
+  margin-left: 10px;
+}
+
+.nav-last {
+  color: #423412 !important; /* White text for the links */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #fff !important; /* Yellow color on hover */
+}
+
+.navbar-toggler {
+  border-color: #FFD700; /* Yellow border for the hamburger icon */
+}
+
+.navbar-toggler-icon {
+  background-color: #FFD700; /* Yellow color for the icon */
+}
+
+.logo-container img {
+  width: 52px; /* Adjust the size of the logo */
+  margin-right: 50px;
+}
+
+/* Buttons */
+.btn-close {
+  background-color: #FFD700; /* Yellow close button in alerts */
+}
+
+.alert {
+  background-color: #FCD95C; /* Dark background for alerts */
+  color: #fff; /* Yellow text for alerts */
+  border: 1px solid #FFD700;
+}
+
+/* Form styles */
+.form-control {
+  background-color: #fff; /* Black background for inputs */
+  color: #000; /* White text for inputs */
+  border: 3px solid #FFD700; /* Yellow borders */
+}
+
+.form-control::placeholder {
+  color: #000;
+}
+
+button {
+  padding: 10px;
+  background-color: #FFD700; /* Yellow buttons */
+  color: #000; /* Black text */
+  border-radius: 10px !important;
+   padding: .4rem 1.5rem;
+}
+
+button:hover {
+  padding: 10px;
+  background-color: #FDE89B; /* Slightly lighter yellow on hover */
+  border-radius: 10px !important;
+  padding: .4rem 1.5rem;
+}
+
+.center-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+/* Container styles */
+.container {
+  padding: 20px;
+  margin-top: 60px;
+}
+
+.alert-dismissible .btn-close {
+  filter: invert(100%); /* Makes the close button visible on dark background */
+}
+
+/* Modal */
+.modal-content {
+  background-color: #000; /* Dark background for modals */
+  color: #FFD700; /* Yellow text */
+  border: 1px solid #FFD700;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #FCD95C !important;
+    border-color: #FCD95C !important;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #967603 !important;
+    border-color: #967603 !important;
+}
+
+.btn {
+  padding: .4rem 1.5rem;
+}
+
+section {
+    padding: 0;
+    margin: auto auto; /* Ensures the section itself is centered */
+    max-width: 800px; /* Optional: Set a max width to prevent the text from being too wide */
+}
+
+.form-margin {
+  margin: 0 0 0 40px;
 }

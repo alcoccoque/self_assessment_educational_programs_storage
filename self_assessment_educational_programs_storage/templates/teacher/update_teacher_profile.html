@@ -1,0 +1,7 @@
+<h2>Edit Teacher Profile</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ teacher_form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+<a href="{% url 'teacher_profile' %}">Cancel</a>

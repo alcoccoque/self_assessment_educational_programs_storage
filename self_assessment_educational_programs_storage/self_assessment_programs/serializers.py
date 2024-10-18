@@ -1,4 +1,5 @@
 """Kissa commands serializers."""
+
 from models import InformationOnSelfAssessmentOfEducationalProgram
 from rest_framework import serializers
 
