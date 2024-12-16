@@ -430,7 +430,7 @@ class CitationAdmin(admin.ModelAdmin):
             'fields': ('pages', 'document_type'),
         }),
     )
-    
+
 
 @admin.register(QualificationImprovement)
 class QualificationImprovementAdmin(admin.ModelAdmin):
@@ -448,9 +448,9 @@ class ResearchProjectAdmin(admin.ModelAdmin):
 
 @admin.register(StudentSupervision)
 class StudentSupervisionAdmin(admin.ModelAdmin):
-    list_display = ('student_name', 'teacher', 'work_type', 'work_topic', 'start_date', 'defense_date')
-    search_fields = ('student_name', 'work_topic')
-    ordering = ('start_date', 'student_name')
+    list_display = ('teacher', 'work_type', 'work_topic', 'start_date', 'defense_date')
+    search_fields = ('work_topic', )
+    ordering = ('start_date', )
 
 
 @admin.register(Conference)

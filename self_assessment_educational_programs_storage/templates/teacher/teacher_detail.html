@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{ teacher.first_name }} {{ teacher.middle_name }} {{ teacher.last_name }}</h1>
+<h1>{{ teacher.last_name }} {{ teacher.first_name }} {{ teacher.middle_name }}</h1>
+
+{% if teacher.position %}
 <p><strong>Посада:</strong> {{ teacher.position }}</p>
+{% endif %}
+
 {% if teacher.department.responsible_department %}
   <p><strong>Структурний підрозділ:</strong> {{ teacher.department.responsible_department }}</p>
 {% endif %}
+
+{% if teacher.academic_title %}
 <p><strong>Вчене звання:</strong> {{ teacher.academic_title }}</p>
+{% endif %}
+
 <p><strong>Науковий ступінь:</strong>
   <ul>
     {% for academic_degree in academic_degrees %}
@@ -14,7 +22,7 @@
             {% if academic_degree.date %}{{ academic_degree.date }}{% endif %}
         </li>
     {% empty %}
-        <li>No academic degree added yet.</li>
+        <li>Наукова ступінь не додана.</li>
     {% endfor %}
   </ul>
 <p><strong>Стаж:</strong></p>
@@ -22,7 +30,7 @@
     {% for experience_year in teacher.experience_years %}
         <li>{{ experience_year }}</li>
     {% empty %}
-        <li>No expirience years added yet.</li>
+        <li>Стаж не заповнений.</li>
     {% endfor %}
   </ul>
 <p><strong>Основне місце роботи:</strong> {% if teacher.is_main_job %}Так{% else %}Ні{% endif %}</p>
@@ -37,7 +45,7 @@
             {% if not qualification.code %}{{ qualification.text }}{% endif %}
         </li>
     {% empty %}
-        <li>No qualifications added yet.</li>
+        <li>Кваліфікація не заповнена.</li>
     {% endfor %}
 </ul>
 
@@ -56,7 +64,7 @@
             {% endif %}
         </li>
     {% empty %}
-        <li>No professional development entries yet.</li>
+        <li>Інформація про підвищення кваліфікації відсутня.</li>
     {% endfor %}
 </ul>
 
@@ -71,7 +79,7 @@
             <li>{{ activity.paragraph }}</li>
         {% endif %}
     {% empty %}
-        <li>No professional activities added yet.</li>
+        <li>Види і результати професійної діяльності відсутні.</li>
     {% endfor %}
 </ul>
 
@@ -80,7 +88,7 @@
     {% for edu in education %}
         <li>{{ edu.text }}</li>
     {% empty %}
-        <li>No education entries yet.</li>
+        <li>Освіта не заповнена.</li>
     {% endfor %}
 </ul>
 
@@ -89,7 +97,7 @@
     {% for course in courses %}
         <li>{{ course.name }}</li>
     {% empty %}
-        <li>No courses added yet.</li>
+        <li>Навчальні дисципліни відсутні.</li>
     {% endfor %}
 </ul>
 

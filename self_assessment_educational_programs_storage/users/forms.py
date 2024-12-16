@@ -63,10 +63,15 @@ class UserSignupForm(SignupForm):
     Check UserSocialSignupForm for accounts created from social.
     """
 
+    ROLE_CHOICES = [
+        ("student", "Студент"),
+        ("teacher", "Викладач"),
+    ]
+
     first_name = forms.CharField(max_length=30, label="Ім'я", required=True)
     last_name = forms.CharField(max_length=30, label="Прізвище", required=True)
     middle_name = forms.CharField(max_length=30, label="По батькові", required=True)
-    is_teacher = forms.BooleanField(required=False, label="Викладач")
+    role = forms.ChoiceField(choices=ROLE_CHOICES, label="Виберіть роль", required=True)
 
     def clean_username(self):
         # Check if the username already exists
@@ -91,13 +96,18 @@ class UserSignupForm(SignupForm):
 
         user.save()
 
-        linked_teacher = link_user_to_teacher(user)
-        if linked_teacher:
-            # Optionally, you can display a message or handle linking logic further
-            pass
-
-        if self.cleaned_data.get("is_teacher") and not linked_teacher:
-            Teacher.objects.create(
+        role = self.cleaned_data.get("role")
+        if role == "teacher":
+            linked_teacher = link_user_to_teacher(user)
+            if not linked_teacher:
+                Teacher.objects.create(
+                    first_name=user.first_name,
+                    last_name=user.last_name,
+                    middle_name=user.middle_name,
+                    user=user,
+                )
+        elif role == "student":
+            Student.objects.create(
                 first_name=user.first_name,
                 last_name=user.last_name,
                 middle_name=user.middle_name,
